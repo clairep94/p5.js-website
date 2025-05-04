@@ -36,16 +36,20 @@ export type OpenProcessingCurationResponse = Array<{
  * @param limit max number of sketches to return
  * @returns sketches
  */
-export const getCurationSketches = async (
-  limit?: number,
-): Promise<OpenProcessingCurationResponse> => {
+export const getCurationSketches = memoize(
+  async (limit?: number): Promise<OpenProcessingCurationResponse> => {
   const limitParam = limit ? `limit=${limit}` : "";
   const response = await fetch(
     `${openProcessingEndpoint}curation/${curationId}/sketches?${limitParam}`,
   );
+
+    if (!response.ok) {
+      console.log("error in getCurationSketches", response);
+    }
   const payload = await response.json();
   return payload as OpenProcessingCurationResponse;
-};
+  },
+);
 
 /**
  * API Response from a call to the Sketch endpoint
