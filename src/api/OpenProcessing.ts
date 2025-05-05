@@ -2,7 +2,7 @@
 // SEE https://documenter.getpostman.com/view/16936458/2s9YC1Xa6X#intro
 
 import type { AnyEntryMap, CollectionEntry } from "astro:content";
-import memoize from "lodash/memoize";
+import { memoizeAsync } from "./memoizeAsync";
 
 const openProcessingEndpoint = "https://openprocessing.org/api/";
 /**
@@ -36,7 +36,7 @@ export type OpenProcessingCurationResponse = Array<{
  * @param limit max number of sketches to return
  * @returns sketches
  */
-export const getCurationSketches = memoize(
+export const getCurationSketches = memoizeAsync(
   async (limit?: number): Promise<OpenProcessingCurationResponse> => {
   const limitParam = limit ? `limit=${limit}` : "";
   const response = await fetch(
@@ -81,7 +81,7 @@ export type OpenProcessingSketchResponse = {
  * @param id
  * @returns
  */
-export const getSketch = memoize(async (
+export const getSketch = memoizeAsync(async (
   id: string,
 ): Promise<OpenProcessingSketchResponse> => {
   const response = await fetch(`${openProcessingEndpoint}sketch/${id}`);
@@ -96,7 +96,7 @@ export const getSketch = memoize(async (
   return payload as OpenProcessingSketchResponse;
 });
 
-export const getSketchSize = memoize(async (id: string) => {
+export const getSketchSize = memoizeAsync(async (id: string) => {
   const sketch = await getSketch(id)
   if (sketch.mode !== 'p5js') {
     return { width: undefined, height: undefined };
@@ -161,7 +161,7 @@ export function isCurationResponse<C extends keyof AnyEntryMap>(
   return "visualID" in (item as any);
 }
 
-export const getRandomCurationSketches = memoize(async (num = 4) => {
+export const getRandomCurationSketches = memoizeAsync(async (num = 4) => {
   const curationSketches = await getCurationSketches();
   const result: OpenProcessingCurationResponse = [];
   const usedIndices: Set<number> = new Set();
