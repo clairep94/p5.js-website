@@ -53,6 +53,8 @@
   },
   "devDependencies": {
     "@codemirror/lang-javascript": "^6.2.2",
+    "@percy/cli": "^1.31.0",
+    "@percy/cypress": "^3.1.6",
     "@preact/preset-vite": "^2.8.2",
     "@swc/html": "^1.10.9",
     "@testing-library/preact": "^3.2.3",
