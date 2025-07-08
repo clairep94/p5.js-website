@@ -38,17 +38,20 @@ setJumpToState(null);
 <BaseLayout title="" variant="homepage" homepageConfig={config}>
   <div class="content-grid-simple mb-xl">
     <div
-      class="col-span-2 lg:col-span-3 order-1 grid grid-cols-subgrid content-start"
+      class="col-span-2 lg:col-span-3 order-1 grid grid-cols-subgrid content-start bg-green-300"
     >
+      HI I'M TESTING PERCY SNAPSHOTS!!!
       <h2 class="col-span-3">{data.referenceHeaderText}</h2>
       <LinkButton class="col-span-1 w-full" variant="link" url="/reference/"
-        >{t("Reference")}</LinkButton
+        >{t("Reference!")}</LinkButton
       >
     </div>
     <div
-      class="col-span-2 lg:col-span-3 order-2 lg:order-4 grid grid-cols-subgrid content-start"
+      class="col-span-2 lg:col-span-3 order-2 lg:order-4 grid grid-cols-subgrid content-start translate-y-20"
     >
-      <h2 class="col-span-full">{data.examplesHeaderText}</h2>
+      <h2 class="col-span-full">
+        {data.examplesHeaderText} I moved this down for percy
+      </h2>
       <LinkButton class="col-span-1 w-full" variant="link" url="/examples/"
         >{t("Examples")}</LinkButton
       >
@@ -63,7 +66,7 @@ setJumpToState(null);
 
   <div class="content-grid-simple mb-xl">
     <div class="col-span-2 lg:col-span-3 grid grid-cols-subgrid content-start">
-      <h2 class="col-span-3">{data.communityHeaderText}</h2>
+      <h2 class="col-span-3">{data.communityHeaderText}!!!!!</h2>
       <LinkButton class="col-span-1 w-full" variant="link" url="/community/"
         >{t("Community")}</LinkButton
       >
