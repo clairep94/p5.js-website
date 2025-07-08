@@ -18,7 +18,8 @@
     "build:search": "tsx ./src/scripts/builders/search.ts",
     "build:p5-version": "tsx ./src/scripts/p5-version.ts",
     "custom:dev": "tsx ./src/scripts/branchTest.ts",
-    "custom:cleanup": "tsx ./src/scripts/resetBranchTest.ts"
+    "custom:cleanup": "tsx ./src/scripts/resetBranchTest.ts",
+    "percy:cypress": "percy exec -- cypress run"
   },
   "dependencies": {
     "@astrojs/check": "^0.5.5",
@@ -69,6 +70,7 @@
     "@uiw/react-codemirror": "^4.21.22",
     "cypress": "^14.5.1",
     "documentation": "^14.0.3",
+    "dotenv": "^17.1.0",
     "eslint": "^8.56.0",
     "eslint-config-preact": "^1.3.0",
     "eslint-config-prettier": "^9.1.0",
